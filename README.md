@@ -11,7 +11,7 @@ A escola também tem vários alunos, cada um matriculado em um ou mais cursos. C
 
 Cada curso é ministrado por um professor e tem um número de identificação único, um nome e uma descrição.
 
-![modelo conceitual](Aula10\gatinho.jpg)
+![modelo conceitual](Aula10/gatinho.jpg)
 
 
 
