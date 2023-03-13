@@ -11,7 +11,7 @@ A escola também tem vários alunos, cada um matriculado em um ou mais cursos. C
 
 Cada curso é ministrado por um professor e tem um número de identificação único, um nome e uma descrição.
 
-![modelo conceitual](https://imgs.search.brave.com/g5-UEuBepO4XZSGBtK-nAF-eWWMF6zC6GvVEOXZmjqc/rs:fit:713:225:1/g:ce/aHR0cHM6Ly90c2Ux/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5R/VF9kUEI4aHBKdHVY/eHVrclNqSmhnSGFF/NyZwaWQ9QXBp)
+![modelo conceitual](D:\Meus cursos\Curso de JavaScript\Aula10\modelo-conceitual.png)
 
 
 
