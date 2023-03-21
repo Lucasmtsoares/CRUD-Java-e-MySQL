@@ -66,16 +66,16 @@ public class ProfessorDAO {
             throw new RuntimeException(e);
         }
     }
-    public void AtualizarProfessor(String nome, String areaEspec, int dep, int IdProfessor) throws ClassNotFoundException{
+    public void AtualizarProfessor(int IdProfessor, Professor professor) throws ClassNotFoundException{
         String sql = "UPDATE Professor SET nome=?,AreaEspecializacao=?, DepartamentoId=? WHERE IdProfessor=?";
 
         try{
             Connection conn = ConexãoMySQL.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
 
-            ps.setString(1,nome);
-            ps.setString(2,areaEspec);
-            ps.setInt(3,dep);
+            ps.setString(1,professor.getNome());
+            ps.setString(2,professor.getAreaEspec());
+            ps.setInt(3,professor.getDep());
             ps.setInt(4,IdProfessor);
 
             ps.executeUpdate();

@@ -77,15 +77,15 @@ public class AlunoDAO {
         }
     
     }
-    public void AtualizarAluno(int IdAluno, String nome, String matricula, int anograduacao) throws ClassNotFoundException{
+    public void AtualizarAluno(int IdAluno, Aluno aluno) throws ClassNotFoundException{
         String sql = "UPDATE Aluno SET Nome = ?,Matricula = ?,AnoGraduacaoPrevisto = ? WHERE IdAluno = ?";
 
         try{
             Connection conn = ConexãoMySQL.getConnection();
             PreparedStatement pst = conn.prepareStatement(sql);
-            pst.setString(1,nome);
-            pst.setString(2,matricula);
-            pst.setInt(3,anograduacao);
+            pst.setString(1,aluno.getNome());
+            pst.setString(2,aluno.getMatricula());
+            pst.setInt(3,aluno.getAnoGraduacao());
             pst.setInt(4,IdAluno);
 
             pst.executeUpdate();

@@ -63,9 +63,16 @@ public class Main{
             System.out.println("Cadastrar curso:");
             try{
                 System.out.print("Nome do curso: ");
+                scan.nextLine();
                 String nomeCurso = scan.nextLine();
                 System.out.print("Descrição: ");
                 String desc = scan.nextLine();
+                System.out.print("Id do professor: ");
+                int IdProfessor = scan.nextInt();
+
+                Curso curso = new Curso(nomeCurso,desc,IdProfessor);
+                
+                new CursoDAO().salvarCurso(curso);
 
             }catch(Exception e){
                 System.out.println("Erro inesperado!!");
@@ -83,7 +90,7 @@ public class Main{
             }catch(Exception e){
                 System.out.println("Erro ao listar alunos!!");
             }
-        }4
+        }
         if(c==5){
             System.out.println("Lista de professores: ");
             try{
@@ -101,15 +108,20 @@ public class Main{
             }
         }
 
-        /*if(c==6){
+        if(c==6){
             System.out.println("Lista de cursos:");
             try{
+                List<Curso> listaDeCursos = new CursoDAO().ListarCursos();
 
+                for(Curso cs: listaDeCursos){
+                    System.out.print("Nome: "+cs.getNome()+" | Descrição: "+cs.getDescricao()+" |IdProfessor: "+cs.getIdProfessor());
+                    System.out.println("\n");
+                }
             }catch(Exception e){
                 System.out.println("Erro inesperado!!");
                 System.out.println(e);
             } 
-        }*/
+        }
 
         if(c==7){
             System.out.println("Deletar Aluno:");
@@ -137,6 +149,17 @@ public class Main{
                 System.out.println(e);
             }
         }
+        if(c==9){
+            System.out.println("Deletar um curso: ");
+            try{
+                System.out.print("Informe o id do curso: ");
+                int IdCurso = scan.nextInt();
+                new CursoDAO().DeleteCurso(IdCurso);
+            }catch(Exception e){
+                System.out.println("Erro inesperado!!");
+                System.out.println(e);
+            }
+        }
         if(c==10){
             System.out.println("Atualizar aluno:");
             System.out.print("Informe o id do aluno: ");
@@ -148,9 +171,11 @@ public class Main{
             String novaMatricula = scan.next();
             System.out.print("Ano de Graduação: ");
             int novoAnoGraduacao = scan.nextInt();
+            Aluno aluno = new Aluno(novoNome,novaMatricula,novoAnoGraduacao);
             AlunoDAO atualizarAluno = new AlunoDAO();
-            atualizarAluno.AtualizarAluno(IdAluno, novoNome,  novaMatricula, novoAnoGraduacao);
+            atualizarAluno.AtualizarAluno(IdAluno,aluno);
         }
+        
         if(c==11){
             System.out.println("Atualizar Professor: ");
 
@@ -165,7 +190,28 @@ public class Main{
                 String areaEspec = scan.next();
                 System.out.print("Id do departamento: ");
                 int dep = scan.nextInt();
-                new ProfessorDAO().AtualizarProfessor(nome,areaEspec,dep,IdProfessor);
+                Professor professor = new Professor(nome,areaEspec,dep);
+                new ProfessorDAO().AtualizarProfessor(IdProfessor, professor);
+            }catch(Exception e){
+                System.out.println("Erro inesperado!!");
+                System.out.println(e);
+            }
+        }
+        if(c==12){
+            System.out.println("Atualizar Curso:");
+            try{
+                System.out.print("Informe o id do curso: ");
+                int IdCurso = scan.nextInt();
+                System.out.println("Novos dados: ");
+                System.out.print("Nome: ");
+                String nome = scan.next();
+                scan.nextLine();
+                System.out.print("Descrição: ");
+                String desc = scan.nextLine();
+                System.out.print("Id do professor: ");
+                int IdProfessor = scan.nextInt();
+                Curso curso = new Curso(nome,desc,IdProfessor);
+                new CursoDAO().AtualizarCurso(IdCurso, curso);
             }catch(Exception e){
                 System.out.println("Erro inesperado!!");
                 System.out.println(e);
@@ -175,3 +221,6 @@ public class Main{
         
     }
 }
+
+
+ 
